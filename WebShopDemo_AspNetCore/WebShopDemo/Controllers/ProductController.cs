@@ -1,14 +1,16 @@
 ﻿namespace WebShopDemo.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
     using WebShopDemo.Core.Contracts;
-    using WebShopDemo.Core.Data.Models;
     using WebShopDemo.Core.Models;
 
     /// <summary>
     /// Web shop products
     /// </summary>
+    /// 
+
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService productService;
