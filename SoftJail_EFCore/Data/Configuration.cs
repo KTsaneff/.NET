@@ -2,6 +2,6 @@
 {
    public static class Configuration
     {
-        public static string ConnectionString = @"Server=localhost, 1433;Database=SoftJail;User Id=sa;Password=JEAlousy01";
+        public static string ConnectionString = @"Server=.;Database=SoftJail;User Id=.;Password=.";
     }
 }
