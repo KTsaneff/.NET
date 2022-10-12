@@ -1,0 +1,22 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "WebShopDemo.Grpc";
+
+package product;
+
+service product{
+	rpc GetAll (google.protobuf.Empty) returns (ProductList);
+}
+
+message ProductList {
+	repeated ProductItem items = 1;
+}
+
+message ProductItem {
+	string id = 1;
+	string name = 2;
+	string imageUrl = 3;
+	double price = 4;
+	int32 quantity = 5;
+}

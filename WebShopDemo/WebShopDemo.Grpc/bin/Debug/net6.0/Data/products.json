@@ -1,0 +1,37 @@
+[
+  {
+    "id": "a348b00f-9101-4684-82db-9016d1d9e38f",
+    "name": "Lamb - Bones",
+    "image_url": "https://cdn11.bigcommerce.com/s-kloz71qit7/images/stencil/800x1054/products/613/1283/LambBones_A__44779.1567792927.jpg?c=3",
+    "price": 9.26,
+    "quantity": 12
+  },
+  {
+    "id": "3f819c93-1cd8-4462-af68-59d6b7495a38",
+    "name": "Pepper - Poblano",
+    "image_url": "https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2013/09/Poblano-Peppers2.jpg",
+    "price": 5.31,
+    "quantity": 4
+  },
+  {
+    "id": "019a6220-5b46-4c27-b21e-90972c3a40b8",
+    "name": "Mushroom - Morels, Dry",
+    "image_url": "https://woodlandfoods.com/img/WF_Images/M21-dried-morels-dried-mushrooms-main.jpg",
+    "price": 21.68,
+    "quantity": 18
+  },
+  {
+    "id": "630a391a-9e11-4871-8a9a-0503f9eecf9e",
+    "name": "Wine - White, Schroder And Schyl",
+    "image_url": "https://www.wine-searcher.com/images/labels/87/34/10378734.jpg",
+    "price": 93.01,
+    "quantity": 18
+  },
+  {
+    "id": "012b5151-8833-422c-bc5d-58be7d27c328",
+    "name": "Lotus Root",
+    "image_url": "https://solidstarts.com/wp-content/uploads/Lotus-Root-for-babies-copy-%C2%A9-Solid-Starts-Inc.-2022.-All-Rights-Reserved.-scaled.jpg",
+    "price": 3.58,
+    "quantity": 20
+  }
+]
