@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebShopDemo.Core.Models
 {
@@ -15,13 +10,13 @@ namespace WebShopDemo.Core.Models
         /// <summary>
         /// Product identifier
         /// </summary>
-        [StringLength(50)]
         public Guid Id { get; set; }
 
         /// <summary>
         /// Product name
         /// </summary>
         [Required]
+        [StringLength(50)]
         public string Name { get; set; } = null!;
 
         /// <summary>

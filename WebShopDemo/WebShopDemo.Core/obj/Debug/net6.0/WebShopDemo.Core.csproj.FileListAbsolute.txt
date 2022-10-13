@@ -24,3 +24,5 @@ C:\Users\krass\source\SoftUni\WebShopDemo\WebShopDemo.Core\obj\Debug\net6.0\WebS
 C:\Users\krass\source\SoftUni\WebShopDemo\WebShopDemo.Core\obj\Debug\net6.0\refint\WebShopDemo.Core.dll
 C:\Users\krass\source\SoftUni\WebShopDemo\WebShopDemo.Core\obj\Debug\net6.0\WebShopDemo.Core.pdb
 C:\Users\krass\source\SoftUni\WebShopDemo\WebShopDemo.Core\obj\Debug\net6.0\ref\WebShopDemo.Core.dll
+C:\Users\krass\source\SoftUni\WebShopDemo\WebShopDemo.Core\bin\Debug\net6.0\WebShopDemo.Core.runtimeconfig.json
+C:\Users\krass\source\SoftUni\WebShopDemo\WebShopDemo.Core\obj\Debug\net6.0\WebShopDemo.Core.genruntimeconfig.cache

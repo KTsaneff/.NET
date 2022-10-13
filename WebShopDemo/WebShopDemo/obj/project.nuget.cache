@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DxetSDfM5oSuV66fpgKZ/i96IszSEw3GdNYBgp2xPcfrCo/poXqFuc4LxkiRlOJNO2nXhxIQ6vqfh6VsS+tGlA==",
+  "dgSpecHash": "fJGjg4ImVYRH/f14jDPvx6OE/2WwEG2D4uUcecb1ewOrG76r01YlsueZ2ZhuZl+UQwJndzqfDWgCEKI3RME5Xg==",
   "success": true,
   "projectFilePath": "C:\\Users\\krass\\source\\SoftUni\\WebShopDemo\\WebShopDemo\\WebShopDemo.csproj",
   "expectedPackageFiles": [
@@ -70,7 +70,7 @@
     "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.10\\microsoft.visualstudio.web.codegeneration.6.0.10.nupkg.sha512",
     "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.10\\microsoft.visualstudio.web.codegeneration.core.6.0.10.nupkg.sha512",
-    "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\6.0.9\\microsoft.visualstudio.web.codegeneration.design.6.0.9.nupkg.sha512",
+    "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\6.0.10\\microsoft.visualstudio.web.codegeneration.design.6.0.10.nupkg.sha512",
     "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.entityframeworkcore\\6.0.10\\microsoft.visualstudio.web.codegeneration.entityframeworkcore.6.0.10.nupkg.sha512",
     "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.templating\\6.0.10\\microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg.sha512",
     "C:\\Users\\krass\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\6.0.10\\microsoft.visualstudio.web.codegeneration.utils.6.0.10.nupkg.sha512",

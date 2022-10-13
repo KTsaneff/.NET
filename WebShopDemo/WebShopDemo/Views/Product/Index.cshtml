@@ -2,56 +2,66 @@
 @model IEnumerable<ProductDto>
 
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Warehouse";
 }
 
-<h1>Product list</h1>
+<h1>Warehouse</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Product" asp-action="Add" class="btn btn-primary">Create New</a>
 </p>
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>
+            <th class="align-middle">
+                Product
+            </th>
+            <th class="align-middle">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th class="align-middle">
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+            <th class="align-middle">
+                In Stock
             </th>
-            <th>
-                @Html.DisplayName("Pcs")
+            <th class="align-middle">
+                @Html.DisplayName("Qty")
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                <input type="number" class="form-control" id="pieces" min="0">
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">Buy</button>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="align-middle">
+                <td class="align-middle">
+                    <img src="@item.ImageUrl" class="rounded float-start" alt="..." width="100" height="75">
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td width="150" class="align-middle">
+                    <input type="number" class="form-control" id="pieces" min="0">
+                </td>
+                <td width="200" class="align-middle">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off">Add stock</button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="button" autocomplete="off" asp-action="Edit" asp-route-id="@item.Id">Details</button>
+                    
+                </td>
+                <td class="align-middle">
+                    <form asp-controller="Product" asp-action="Delete" method="post">
+                        <input name="id" type="hidden" value="@item.Id.ToString()"/>
+                        <button  type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

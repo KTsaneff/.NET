@@ -1630,11 +1630,11 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design/6.0.9": {
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design/6.0.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.DotNet.Scaffolding.Shared": "6.0.9",
-          "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": "6.0.9",
+          "Microsoft.DotNet.Scaffolding.Shared": "6.0.10",
+          "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": "6.0.10",
           "NuGet.Packaging": "6.2.1",
           "System.Configuration.ConfigurationManager": "6.0.0",
           "System.Private.Uri": "4.3.2",
@@ -3655,8 +3655,11 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9",
           "Microsoft.Extensions.Configuration": "6.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
           "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": "6.0.10",
           "Newtonsoft.Json": "13.0.1"
         },
@@ -5527,17 +5530,17 @@
         "microsoft.visualstudio.web.codegeneration.core.nuspec"
       ]
     },
-    "Microsoft.VisualStudio.Web.CodeGeneration.Design/6.0.9": {
-      "sha512": "LFE71Yquas2T73LKFhWvtrZM8yJuhO8ptyCotPw1hvdOfdOYt9Ww1NmIFS76V+cM/9a2k8jzvDZq+YdiPyWYhg==",
+    "Microsoft.VisualStudio.Web.CodeGeneration.Design/6.0.10": {
+      "sha512": "4X4woAKNixsFWJH7tBWpj7gsM9QlvAIpOSwP5QEOOnjYDrNphNkqk8NnEkMhPIAVLpv+S7j5ZkTSYUvB92FC6A==",
       "type": "package",
-      "path": "microsoft.visualstudio.web.codegeneration.design/6.0.9",
+      "path": "microsoft.visualstudio.web.codegeneration.design/6.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/dotnet-aspnet-codegenerator-design.dll",
         "lib/net6.0/dotnet-aspnet-codegenerator-design.xml",
-        "microsoft.visualstudio.web.codegeneration.design.6.0.9.nupkg.sha512",
+        "microsoft.visualstudio.web.codegeneration.design.6.0.10.nupkg.sha512",
         "microsoft.visualstudio.web.codegeneration.design.nuspec"
       ]
     },
@@ -10344,7 +10347,7 @@
       "Microsoft.AspNetCore.Identity.UI >= 6.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.9",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.9",
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.10",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 6.0.10",
       "WebShopDemo.Core >= 1.0.0"
     ]
@@ -10420,7 +10423,7 @@
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "[6.0.9, )"
+            "version": "[6.0.10, )"
           },
           "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
             "target": "Package",
