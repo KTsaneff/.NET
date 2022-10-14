@@ -15,11 +15,25 @@ namespace WebShopDemo.Controllers
 
         public IActionResult Index()
         {
+            //this.HttpContext.Response.Cookies.Append("myCookie", "tempCookie", new CookieOptions()
+            //{
+
+            //});
+
+            //this.HttpContext.Session.SetString("name", "Tsaneff");
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            //string? name = this.HttpContext.Session.GetString("name");
+
+            //if (!string.IsNullOrEmpty(name))
+            //{
+            //    return Ok(name);
+            //}
+
             return View();
         }
 
