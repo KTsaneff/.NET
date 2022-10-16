@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using ProductShop.Common;
 using ProductShop.Data;
 using ProductShop.Dtos.Category;
 using ProductShop.Dtos.CategoryProduct;
@@ -16,30 +18,45 @@ using ProductShop.Models;
 namespace ProductShop
 {
     public class StartUp
-    {
-        private static string filePath = "";
+    {        
         public static void Main(string[] args)
         {
             Mapper.Initialize(cfg => cfg.AddProfile(typeof(ProductShopProfile)));
             ProductShopContext dbContext = new ProductShopContext();
 
-            //InitializeFilePath("users.json");
-            //InitializeFilePath("products.json");
-            //InitializeFilePath("categories.json");
-            InitializeFilePath("categories-products.json");
+            //string filePath = PathInitializer.CombineImportPath("users.json", Directory.GetCurrentDirectory());
+            //string filePath = PathInitializer.CombineImportPath("products.json", Directory.GetCurrentDirectory());
+            //string filePath = PathInitializer.CombineImportPath("categories.json", Directory.GetCurrentDirectory());
+            //string filePath = PathInitializer.CombineImportPath("categories-products.json", Directory.GetCurrentDirectory());
 
+            //string inputJson = File.ReadAllText(filePath);
 
-            string inputJson = File.ReadAllText(filePath);
+            string filePath = PathInitializer.CombineExportPath("products-in-range.json", Directory.GetCurrentDirectory());
 
             //string result = ImportUsers(dbContext, inputJson);
             //string result = ImportProducts(dbContext, inputJson);
             //string result = ImportCategories(dbContext, inputJson);
-            string result = ImportCategoryProducts(dbContext, inputJson);
+            //string result = ImportCategoryProducts(dbContext, inputJson);
+            string result = GetProductsInRange(dbContext);
 
             //dbContext.Database.EnsureDeleted();
             //dbContext.Database.EnsureCreated();
 
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
+
+            File.WriteAllText(filePath, result);
+        }
+
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            ExportProductDto[] products = context.Products
+                .Where(p => p.Price >= 500 && p.Price <= 1000)
+                .OrderBy(p => p.Price)
+                .ProjectTo<ExportProductDto>().ToArray();
+
+            string json = JsonConvert.SerializeObject(products, Formatting.Indented);
+
+            return json;
         }
 
         public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
@@ -135,12 +152,7 @@ namespace ProductShop
             context.SaveChanges();
 
             return $"Successfully imported {validUsers.Count}";
-        }
-
-        private static void InitializeFilePath(string fileName)
-        {
-            filePath = Path.Combine(Directory.GetCurrentDirectory(), "../../../Datasets/", fileName);
-        }
+        }       
 
 
         /// <summary>
