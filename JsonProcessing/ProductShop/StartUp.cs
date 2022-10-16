@@ -31,13 +31,20 @@ namespace ProductShop
 
             //string inputJson = File.ReadAllText(filePath);
 
-            string filePath = PathInitializer.CombineExportPath("products-in-range.json", Directory.GetCurrentDirectory());
+            //string filePath = PathInitializer.CombineExportPath("products-in-range.json", Directory.GetCurrentDirectory());
+            //string filePath = PathInitializer.CombineExportPath("user-sold-products.json", Directory.GetCurrentDirectory());
+            //string filePath = PathInitializer.CombineExportPath("categories-by-products.json", Directory.GetCurrentDirectory());
+            string filePath = PathInitializer.CombineExportPath("users-and-products.json", Directory.GetCurrentDirectory());
 
             //string result = ImportUsers(dbContext, inputJson);
             //string result = ImportProducts(dbContext, inputJson);
             //string result = ImportCategories(dbContext, inputJson);
             //string result = ImportCategoryProducts(dbContext, inputJson);
-            string result = GetProductsInRange(dbContext);
+
+            //string result = GetProductsInRange(dbContext);
+            //string result = GetSoldProducts(dbContext);
+            //string result = GetCategoriesByProductsCount(dbContext);
+            string result = GetUsersWithProducts(dbContext);
 
             //dbContext.Database.EnsureDeleted();
             //dbContext.Database.EnsureCreated();
@@ -45,6 +52,66 @@ namespace ProductShop
             //Console.WriteLine(result);
 
             File.WriteAllText(filePath, result);
+        }
+
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            //ExportUserWithSoldProductsDto[] users = context
+            //    .Users.Where(u => u.ProductsSold.Any(ps => ps.BuyerId.HasValue))
+            //    .OrderByDescending(u => u.ProductsSold.Count(ps => ps.BuyerId.HasValue))
+            //    .ProjectTo<ExportUserWithSoldProductsDto>().ToArray();
+
+            ExportAllUsersDto serDto = new ExportAllUsersDto()
+            {
+                Users = context.Users
+               .Where(u => u.ProductsSold.Any(p => p.BuyerId.HasValue))
+               .OrderByDescending(u => u.ProductsSold.Count(p => p.BuyerId.HasValue))
+               .Select(u => new ExportUserWithSoldProductsDto()
+               {
+                   FirstName = u.FirstName,
+                   LastName = u.LastName,
+                   Age = u.Age,
+                   SoldProducts = new ExportAllSoldProductsDto()
+                   {
+                       Products = u.ProductsSold
+                       .Where(p => p.BuyerId.HasValue)
+                       .Select(p => new ExportSimpleProductDto()
+                       {
+                           Name = p.Name,
+                           Price = p.Price
+                       }).ToArray()
+                   }
+               }).ToArray()
+            };
+
+            JsonSerializerSettings serializerSettings = new JsonSerializerSettings()
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
+
+            string json = JsonConvert.SerializeObject(serDto, Formatting.Indented,serializerSettings);
+            return json;
+        }
+
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            ExportCategoryDto[] categories = context
+                .Categories.OrderByDescending(c => c.CategoryProducts.Count)
+                .ProjectTo<ExportCategoryDto>().ToArray();
+
+            string json = JsonConvert.SerializeObject(categories, Formatting.Indented);
+            return json;
+        }
+
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            ExportBuyerDto[] buyers = context
+                .Users.Where(u => u.ProductsSold.Any(p => p.BuyerId.HasValue))
+                .OrderBy(u => u.LastName).ThenBy(u => u.FirstName)
+                .ProjectTo<ExportBuyerDto>().ToArray();
+
+            string json = JsonConvert.SerializeObject(buyers, Formatting.Indented);
+            return json;
         }
 
         public static string GetProductsInRange(ProductShopContext context)
