@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebShopDemo.Core.Contracts;
 using WebShopDemo.Core.Data.Models;
 using WebShopDemo.Core.Models;
@@ -21,6 +22,8 @@ namespace WebShopDemo.Controllers
         /// List all products
         /// </summary>
         /// <returns></returns>
+        
+        [Authorize]       
         public async Task<IActionResult> Index()
         {
             var products = await productService.GetAll();
