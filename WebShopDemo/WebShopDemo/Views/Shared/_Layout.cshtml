@@ -23,15 +23,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Warehouse</a>
-                        </li>
-                        @if (User?.Identity?.IsAuthenticated == true)
+                        @if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Warehouse</a>
                             </li>
-                        }                        
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
                         <li>
                             <form class="form-inline">
                                 <div class="input-group">
@@ -39,7 +39,7 @@
                                     <span class="input-group-append">
                                         <button class="btn btn-outline-primary my-2 my-sm-0 btn-dark" type="submit">Find</button>
                                     </span>
-                                </div>                                
+                                </div>
                             </form>
                         </li>
                     </ul>
