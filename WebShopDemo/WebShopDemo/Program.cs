@@ -6,6 +6,7 @@ using WebShopDemo.Core.Data;
 using WebShopDemo.Core.Data.Common;
 using WebShopDemo.Core.Data.Models.Account;
 using System.Configuration;
+using Microsoft.EntityFrameworkCore.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,11 +28,17 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 
     options.Lockout.MaxFailedAccessAttempts = 5;
 })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.ConfigureApplicationCookie(options => 
 {
     options.LoginPath = "/Account/Login";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanDeleteProduct", policy => policy.RequireAssertion(context => context.User.IsInRole(RoleConstants.Manager) && context.User.IsInRole(RoleConstants.Administrator)));
 });
 
 builder.Services.AddControllersWithViews();
