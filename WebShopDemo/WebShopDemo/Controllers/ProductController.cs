@@ -9,8 +9,7 @@ namespace WebShopDemo.Controllers
     /// <summary>
     /// Web shop products
     /// </summary>
-    [Authorize]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductService productService;
 
@@ -24,15 +23,17 @@ namespace WebShopDemo.Controllers
         /// </summary>
         /// <returns></returns>
         
-        [Authorize]       
+        [AllowAnonymous]       
         public async Task<IActionResult> Index()
         {
             var products = await productService.GetAll();
+            ViewData["Title"] = "Products";
 
             return View(products);
         }
 
         [HttpGet]
+        [Authorize(Roles = $"{RoleConstants.Manager}, {RoleConstants.Administrator}")]
         public IActionResult Add()
         {
             var model = new ProductDto();
@@ -40,6 +41,7 @@ namespace WebShopDemo.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = $"{RoleConstants.Manager}, {RoleConstants.Administrator}")]
         public async Task<IActionResult> Add(ProductDto model)
         {
             if (!ModelState.IsValid)
@@ -53,6 +55,8 @@ namespace WebShopDemo.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "CanDeleteProduct")]
+
         public async Task<IActionResult> Delete(string id)
         {
             Guid idGuid = Guid.Parse(id);

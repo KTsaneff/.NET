@@ -58,7 +58,7 @@
                 <td class="align-middle">
                     <form asp-controller="Product" asp-action="Delete" method="post">
                         <input name="id" type="hidden" value="@item.Id.ToString()"/>
-                        <button  type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        <button  type="submit" class="btn btn-danger" @(User.IsInRole("Administrator") ? "" : "disabled")><i class="fa fa-trash"></i></button>
                     </form>
                 </td>
             </tr>
