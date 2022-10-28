@@ -12,6 +12,8 @@
         public const int UserUsernameMinLength = 3;
         public const int UserUsernameMaxLength = 18;
 
+        public const int UserPasswordMinLength = 6;
+
         //Task
         public const int MinTaskTitle = 5;
         public const int MaxTaskTitle = 70;
@@ -22,5 +24,8 @@
         //Board
         public const int MinBoardName = 3;
         public const int MaxBoardName = 30;
+
+        //Paths
+        public const string LoginPath = "/TaskBoardUser/Login";
     }
 }
