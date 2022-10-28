@@ -11,9 +11,18 @@ builder.Services.AddDbContext<TaskBoardAppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<TaskBoardUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<TaskBoardUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.Password.RequiredLength = DataConstants.UserPasswordMinLength;
+})
     .AddEntityFrameworkStores<TaskBoardAppDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = DataConstants.LoginPath;
+});
 
 var app = builder.Build();
 
