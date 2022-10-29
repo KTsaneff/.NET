@@ -14,7 +14,7 @@ namespace TaskBoardApp.Data.Entities
 
         [Required]
         [MaxLength(DataConstants.MaxTaskDescription)]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         public DateTime CreatedOn { get; set; }
 
