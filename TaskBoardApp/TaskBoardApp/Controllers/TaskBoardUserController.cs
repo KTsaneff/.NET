@@ -6,29 +6,26 @@ using TaskBoardApp.Models;
 
 namespace TaskBoardApp.Controllers
 {
-    [Authorize]
-    public class TaskBoardUserController : Controller
+    public class TaskBoardUserController : BaseController
     {
         private readonly UserManager<TaskBoardUser> userManager;
         private readonly SignInManager<TaskBoardUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public TaskBoardUserController(
             UserManager<TaskBoardUser> _userManager, 
-            SignInManager<TaskBoardUser> _signInManager)
+            SignInManager<TaskBoardUser> _signInManager,
+            RoleManager<IdentityRole> _roleManager)
         {
             this.userManager = _userManager;
             this.signInManager = _signInManager;
+            this.roleManager = _roleManager;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register()
         {
-            if (User?.Identity?.IsAuthenticated ?? false)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
             var model = new RegisterViewModel();
             return View(model);
         }
@@ -67,14 +64,12 @@ namespace TaskBoardApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl = null)
         {
-            if (User?.Identity?.IsAuthenticated ?? false)
+            var model = new LoginViewModel()
             {
-                return RedirectToAction("Index", "Home");
-            }
-
-            var model = new LoginViewModel();
+                ReturnUrl = returnUrl
+            };
 
             return View(model);
         }
@@ -95,12 +90,22 @@ namespace TaskBoardApp.Controllers
                 var result = await signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (result.Succeeded)
                 {
+                    if (model.ReturnUrl != null)
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
             }
 
             ModelState.AddModelError("", "Invalid Login!");
             return View(model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
