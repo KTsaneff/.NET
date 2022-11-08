@@ -17,10 +17,14 @@
                 <p class="mb-0">Rating: @movie.Rating</p>
                 <p>Genre: @movie.Genre</p>
             </div>
-
-            <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
-                <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
-            </form>
+            <div>
+                <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
+                    <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
+                </form>
+                <form class="input-group-sm" asp-route-id="@movie.Id" asp-controller="Movies" asp-action="Edit" method="get">
+                    <input class="fs-6 btn btn-secondary mb-3 p-2" type="submit" value="Edit" />
+                </form>
+            </div>
         </div>
     }
 </div>

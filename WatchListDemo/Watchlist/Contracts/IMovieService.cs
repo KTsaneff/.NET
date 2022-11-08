@@ -16,5 +16,9 @@ namespace Watchlist.Contracts
         Task<IEnumerable<MovieViewModel>> GetWatchedAsync(string userId);
 
         Task RemoveMovieFromCollectionAsync(int  movieId, string userId);
+
+        Task<EditMovieViewModel> GetForEditAsync(int id);
+
+        Task EditAsync(EditMovieViewModel model);
     }
 }
