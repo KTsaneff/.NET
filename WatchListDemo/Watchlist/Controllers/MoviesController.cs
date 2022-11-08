@@ -59,6 +59,27 @@ namespace Watchlist.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var model = await movieService.GetForEditAsync(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditMovieViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await movieService.EditAsync(model);
+
+            return RedirectToAction(nameof(All));
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddToCollection(int movieId)
         {
