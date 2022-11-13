@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artico", "Artico\Artico.csproj", "{CDFD5941-B848-465B-9366-F88806FAD7F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artico.Core", "Artico.Core\Artico.Core.csproj", "{0202BCB8-C064-415D-A2F9-98A730EDA7AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDFD5941-B848-465B-9366-F88806FAD7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDFD5941-B848-465B-9366-F88806FAD7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDFD5941-B848-465B-9366-F88806FAD7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDFD5941-B848-465B-9366-F88806FAD7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0202BCB8-C064-415D-A2F9-98A730EDA7AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0202BCB8-C064-415D-A2F9-98A730EDA7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0202BCB8-C064-415D-A2F9-98A730EDA7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0202BCB8-C064-415D-A2F9-98A730EDA7AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA956BA5-B95E-4E65-BBD0-34F601115C42}
+	EndGlobalSection
+EndGlobal
