@@ -1,7 +1,7 @@
-using Artico.Core;
+using Artico.Core.Contracts;
 using Artico.Core.Data;
-using Artico.Core.Data.Common;
 using Artico.Core.Data.Models;
+using Artico.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,18 +17,21 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
     options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = true;
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IApplicationUserService, ApplicationUserService>();
+builder.Services.AddScoped<IArticleService, ArticleService>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/ApplicationUser/Login";
 });
-
-builder.Services.AddControllersWithViews();
-
-builder.Services.AddScoped<IRepository, Repository>();
 
 var app = builder.Build();
 
