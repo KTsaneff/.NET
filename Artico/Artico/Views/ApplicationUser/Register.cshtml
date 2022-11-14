@@ -32,7 +32,7 @@
                 <input class="form-control" type="password" autocomplete="new-password" aria-required="true" asp-for="@Model.ConfirmPassword" />
                 <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
             </div>
-            <div class="mb-3">
+            <div class="text-center mb-3">
                 <label asp-for="@Model.JobId" class="form-label">Job</label>
                 <select asp-for="@Model.JobId" class="form-control">
                     @foreach (var job in Model.Jobs)
@@ -42,8 +42,8 @@
                 </select>
                 <span asp-validation-for="JobId" class="text-danger"></span>
             </div>
-            <div class="mb-3">
-                <label asp-for="@Model.PositionId" class="form-label">Genre</label>
+            <div class="text-center mb-3">
+                <label asp-for="@Model.PositionId" class="form-label">Position</label>
                 <select asp-for="@Model.PositionId" class="form-control">
                     @foreach (var position in Model.Positions)
                     {

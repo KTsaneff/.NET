@@ -10,6 +10,9 @@ namespace Artico.Core.Data.Models
 {
     public class Article
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         public string Title { get; set; } = null!;
 
@@ -17,7 +20,7 @@ namespace Artico.Core.Data.Models
         public string Body { get; set; } = null!;
 
         [Required]
-        public List<string> Tags { get; set; } = new List<string>();
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
 
         public int Order { get; set; }
 

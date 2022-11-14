@@ -1,4 +1,5 @@
-﻿using Artico.Core.Data.Models;
+﻿using Artico.Core.Contracts;
+using Artico.Core.Data.Models;
 using Artico.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,23 +11,27 @@ namespace Artico.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly RoleManager<ApplicationUser> roleManager;
+        private readonly IApplicationUserService userService;
 
         public ApplicationUserController(
-            UserManager<ApplicationUser> _userManager, 
-            SignInManager<ApplicationUser> _signInManager, 
-            RoleManager<ApplicationUser> _roleManager)
+            UserManager<ApplicationUser> _userManager,
+            SignInManager<ApplicationUser> _signInManager,
+            IApplicationUserService _userService)
         {
             this.userManager = _userManager;
             this.signInManager = _signInManager;
-            this.roleManager = _roleManager;
+            this.userService = _userService;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
-            var model = new RegisterViewModel();
+            var model = new RegisterViewModel()
+            {
+                Jobs = await userService.GetJobAsync(),
+                Positions = await userService.GetPositionAsync()
+            };
 
 
             return View(model);
@@ -70,7 +75,7 @@ namespace Artico.Controllers
         {
             if (User?.Identity?.IsAuthenticated ?? false)
             {
-                return RedirectToAction("Home", "Index");
+                return RedirectToAction("All", "Article");
             }
             var model = new LoginViewModel();
 
@@ -93,7 +98,7 @@ namespace Artico.Controllers
                 var result = await signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Home", "Index");
+                    return RedirectToAction("All", "Article");
                 }
             }
             ModelState.AddModelError("", "Invalid login!");
