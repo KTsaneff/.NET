@@ -1,6 +1,7 @@
 ﻿using Artico.Core.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Artico.Core.Data
 {
@@ -12,10 +13,17 @@ namespace Artico.Core.Data
 
         }
 
+        public DbSet<Article> Articles { get; set; } = null!;
+
+        public DbSet<Job> Jobs { get; set; } = null!;
+
+        public DbSet<Position> Positions { get; set; } = null!;
+
+        public DbSet<Tag> Tags { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
 
             builder
                 .Entity<Job>()
@@ -98,11 +106,5 @@ namespace Artico.Core.Data
                     Name = "Intern"
                 });
         }
-
-        public DbSet<Article> Articles { get; set; } = null!;
-
-        public DbSet<Job> Jobs { get; set; } = null!;
-
-        public DbSet<Position> Positions { get; set; } = null!;
     }
 }
