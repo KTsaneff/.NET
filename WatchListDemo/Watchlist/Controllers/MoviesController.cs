@@ -6,6 +6,7 @@ using Watchlist.Services;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using System.Security.Claims;
+using Watchlist.Filters;
 
 namespace Watchlist.Controllers
 {
@@ -27,6 +28,7 @@ namespace Watchlist.Controllers
         }
 
         [HttpGet]
+        [MyAction]
         public async Task<IActionResult> Add()
         {
             var model = new AddMovieViewModel()
